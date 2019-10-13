@@ -17,6 +17,7 @@
 		D0B1568D23520B4F00EF5FD1 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1568C23520B4F00EF5FD1 /* ComplicationController.swift */; };
 		D0B1568F23520B5000EF5FD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B1568E23520B5000EF5FD1 /* Assets.xcassets */; };
 		D0B1569223520B5000EF5FD1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B1569123520B5000EF5FD1 /* Preview Assets.xcassets */; };
+		D0B156A42352286200EF5FD1 /* gallery.ckcomplication in Resources */ = {isa = PBXBuildFile; fileRef = D0B156A32352286200EF5FD1 /* gallery.ckcomplication */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		D0B1568E23520B5000EF5FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0B1569123520B5000EF5FD1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0B1569323520B5000EF5FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0B156A32352286200EF5FD1 /* gallery.ckcomplication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gallery.ckcomplication; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		D0B1568523520B4F00EF5FD1 /* MonthDate WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D0B156A32352286200EF5FD1 /* gallery.ckcomplication */,
 				D0B1568623520B4F00EF5FD1 /* ContentView.swift */,
 				D0B1568823520B4F00EF5FD1 /* HostingController.swift */,
 				D0B1568A23520B4F00EF5FD1 /* ExtensionDelegate.swift */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B1569223520B5000EF5FD1 /* Preview Assets.xcassets in Resources */,
+				D0B156A42352286200EF5FD1 /* gallery.ckcomplication in Resources */,
 				D0B1568F23520B5000EF5FD1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

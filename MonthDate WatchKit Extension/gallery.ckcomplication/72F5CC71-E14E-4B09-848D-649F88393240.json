@@ -1,0 +1,15 @@
+{
+  "sensitivity" : 0,
+  "line1TextProvider" : {
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Oct"
+  },
+  "line2TextProvider" : {
+    "class" : "CLKSimpleTextProvider",
+    "text" : "12"
+  },
+  "highlightLine2" : false,
+  "class" : "CLKComplicationTemplateGraphicCircularStackText",
+  "version" : 30000,
+  "linkedOnOrAfterGrace" : false
+}

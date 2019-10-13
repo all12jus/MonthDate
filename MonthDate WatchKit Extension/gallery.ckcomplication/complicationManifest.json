@@ -1,0 +1,7 @@
+{
+  "supported complication families" : {
+    "4" : "BEF0F90C-51C9-41E0-A31B-3D778D5A45AA.json",
+    "10" : "72F5CC71-E14E-4B09-848D-649F88393240.json"
+  },
+  "client ID" : "com.justinjallen.MonthDate.watchkitapp.watchkitextension"
+}
