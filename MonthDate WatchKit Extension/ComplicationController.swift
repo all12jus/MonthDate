@@ -40,25 +40,21 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 template.line1TextProvider = month
                 template.line2TextProvider = day
                 return template
-                break
             case .circularSmall:
                 let template = CLKComplicationTemplateCircularSmallStackText()
                 template.line1TextProvider = month
                 template.line2TextProvider = day
                 return template
-                break
             case .modularLarge:
                 let template = CLKComplicationTemplateModularLargeStandardBody()
                 template.headerTextProvider = month
                 template.body1TextProvider = day
                 return template
-                break
             case .graphicCircular:
                 let template = CLKComplicationTemplateGraphicCircularStackText()
                 template.line1TextProvider = month
                 template.line2TextProvider = day
                 return template
-                break
             default: return nil
         }
         // return template
@@ -120,7 +116,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         let template = getTemplate(complication: complication)
         if let tmp = template {
-            handler(template)
+            handler(tmp)
         }
     }
     
