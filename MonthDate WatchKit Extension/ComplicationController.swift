@@ -103,7 +103,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // Call the handler with the timeline entries after to the given date
         // let truncated = Calendar.current.startOfDay(for: Date())
         var currentDate: Date = date
-        let entries: [CLKComplicationTimelineEntry] = []        
+        var entries: [CLKComplicationTimelineEntry] = []        
         let template = getTemplate(complication: complication)
         if let tmp = template {
             // loop thru days until then.
