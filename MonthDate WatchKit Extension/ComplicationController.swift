@@ -91,7 +91,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 //        getTemplate(complication)
         let template = getTemplate(complication: complication)
         if let tmp = template {
-            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
+            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: tmp)
             handler(entry)
         } else {
             print("ERROR")
