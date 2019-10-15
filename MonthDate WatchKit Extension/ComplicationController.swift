@@ -111,7 +111,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
                 let curr = Calendar.current.startOfDay(for: currentDate)
                 let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
-                entries.push(entry)
+                entries.append(entry)
             }
         } 
         
