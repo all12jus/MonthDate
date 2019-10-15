@@ -25,12 +25,12 @@ extension Date {
 class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: Template Customization
     
-    func getTemplate(complication: CLKComplication) -> CLKComplicationTemplate? {
+    func getTemplate(_ complication: CLKComplication, date: Date = Date()) -> CLKComplicationTemplate? {
         // TODO here
         
-        let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
+        let month = CLKSimpleTextProvider(text: date.month , shortText: date.month)
         month.tintColor = monthColor
-        let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
+        let day = CLKSimpleTextProvider(text: date.day, shortText: date.day)
         day.tintColor = dayColor        
         
         // var template: CLKComplicationTemplate? = nil
@@ -85,7 +85,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry        
 //        getTemplate(complication)
-        let template = getTemplate(complication: complication)
+        let template = getTemplate(complication)
         if let tmp = template {
             let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: tmp)
             handler(entry)
@@ -104,12 +104,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // let truncated = Calendar.current.startOfDay(for: Date())
         var currentDate: Date = date
         var entries: [CLKComplicationTimelineEntry] = []        
-        let template = getTemplate(complication: complication)
+        // let template = getTemplate(complication)
         if let tmp = template {
             // loop thru days until then.
-            for i in 1...limit {
+            for _ in 1...limit {
+            
                 currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
                 let curr = Calendar.current.startOfDay(for: currentDate)
+                let template = getTemplate(complication, date: curr)
                 let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
                 entries.append(entry)
             }
@@ -122,7 +124,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        let template = getTemplate(complication: complication)
+        let template = getTemplate(complication)
         if let tmp = template {
             handler(tmp)
         }
