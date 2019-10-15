@@ -25,14 +25,16 @@ extension Date {
 class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: Template Customization
     
-    func getTemplate(complication: CLKComplication) -> CLKComplicationTemplate {
+    func getTemplate(complication: CLKComplication) -> CLKComplicationTemplate? {
         // TODO here
+        var template: CLKComplicationTemplate? = nil
         switch(complication.family){
-            case CLKCompilcationFamily.modularSmall:
+            case .modularSmall:
                 template = CLKComplicationTemplateModularSmallStackText()
                 break
             default: break
         }
+        return template
     }
     
     let monthColor = UIColor.green
