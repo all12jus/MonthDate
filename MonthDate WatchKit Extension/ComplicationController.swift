@@ -23,6 +23,17 @@ extension Date {
 }
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
+    // MARK: Template Customization
+    
+    func getTemplate(complication: CLKComplication) -> CLKComplicationTemplate {
+        // TODO here
+        switch(complication.family){
+            case CLKCompilcationFamily.modularSmall:
+                template = CLKComplicationTemplateModularSmallStackText()
+                break
+            default: break
+        }
+    }
     
     let monthColor = UIColor.green
     let dayColor = UIColor.white
