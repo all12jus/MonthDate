@@ -27,10 +27,33 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTemplate(complication: CLKComplication) -> CLKComplicationTemplate? {
         // TODO here
+        
+        let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
+        month.tintColor = monthColor
+        let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
+        day.tintColor = dayColor        
+        
         var template: CLKComplicationTemplate? = nil
         switch(complication.family){
             case .modularSmall:
                 template = CLKComplicationTemplateModularSmallStackText()
+                template.line1TextProvider = month
+                template.line2TextProvider = day
+                break
+            case .circularSmall:
+                template = CLKComplicationTemplateCircularSmallStackText()
+                template.line1TextProvider = month
+                template.line2TextProvider = day
+                break
+            case .modularLarge:
+                template = CLKComplicationTemplateModularLargeStandardBody()
+                template.headerTextProvider = month
+                template.body1TextProvider = day
+                break
+            case .graphicCircular:
+                template = CLKComplicationTemplateGraphicCircularStackText()
+                template.line1TextProvider = month
+                template.line2TextProvider = day
                 break
             default: break
         }
@@ -61,8 +84,16 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry        
-
+        getTemplate(complication)
+        let template = getTemplate(complication)
+        if let tmp = template {
+            let entry = CLKCOmplicationTimelineEntry(date: Date(), complicationTemplate: template)
+            handler(entry)
+        } else {
+            print("ERROR")
+        }
         
+        /*
         let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
         month.tintColor = monthColor
         let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
@@ -97,6 +128,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         } else {
             handler(nil)
         }
+        */
 //        handler(nil)
     }
     
@@ -107,12 +139,24 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after to the given date
+        /*
+        let template = getTemplate(complication)
+        if let tmp = template {
+            // loop thru days until then.
+        } 
+        */       
+        
         handler(nil)
     }
     
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
+        let template = getTemplate(complication)
+        if let tmp = template {
+            handler(template)
+        }
+        /*
         let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
         month.tintColor = monthColor
         let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
@@ -145,7 +189,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
             handler(nil)
         }
-        
+        */
     }
     
 }
