@@ -102,11 +102,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after to the given date
         // let truncated = Calendar.current.startOfDay(for: Date())
-        let entries: CLKComplicationTimelineEntry = []        
-        let template = getTemplate(complication)
+        let entries: [CLKComplicationTimelineEntry] = []        
+        let template = getTemplate(complication: complication)
         if let tmp = template {
             // loop thru days until then.
-            for i in 1..limit {
+            for i in 1...limit {
                 date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
                 let curr = Calendar.current.startOfDay(for: date)
                 let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
