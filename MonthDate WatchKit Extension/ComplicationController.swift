@@ -33,31 +33,35 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
         day.tintColor = dayColor        
         
-        var template: CLKComplicationTemplate? = nil
+        // var template: CLKComplicationTemplate? = nil
         switch(complication.family){
             case .modularSmall:
-                template = CLKComplicationTemplateModularSmallStackText()
+                let template = CLKComplicationTemplateModularSmallStackText()
                 template.line1TextProvider = month
                 template.line2TextProvider = day
+                return template
                 break
             case .circularSmall:
-                template = CLKComplicationTemplateCircularSmallStackText()
+                let template = CLKComplicationTemplateCircularSmallStackText()
                 template.line1TextProvider = month
                 template.line2TextProvider = day
+                return template
                 break
             case .modularLarge:
-                template = CLKComplicationTemplateModularLargeStandardBody()
+                let template = CLKComplicationTemplateModularLargeStandardBody()
                 template.headerTextProvider = month
                 template.body1TextProvider = day
+                return template
                 break
             case .graphicCircular:
-                template = CLKComplicationTemplateGraphicCircularStackText()
+                let template = CLKComplicationTemplateGraphicCircularStackText()
                 template.line1TextProvider = month
                 template.line2TextProvider = day
+                return template
                 break
-            default: break
+            default: return nil
         }
-        return template
+        // return template
     }
     
     let monthColor = UIColor.green
@@ -84,52 +88,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry        
-        getTemplate(complication)
-        let template = getTemplate(complication)
+//        getTemplate(complication)
+        let template = getTemplate(complication: complication)
         if let tmp = template {
-            let entry = CLKCOmplicationTimelineEntry(date: Date(), complicationTemplate: template)
+            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(entry)
         } else {
             print("ERROR")
         }
-        
-        /*
-        let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
-        month.tintColor = monthColor
-        let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
-        day.tintColor = dayColor
-        // This method will be called once per supported complication, and the results will be cached
-        if (complication.family == .modularSmall) {
-//            let template = CLKComplicationTemplateModularSmallSimpleText()
-//            template.textProvider = month
-            let template = CLKComplicationTemplateModularSmallStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
-            handler(entry)
-        } else if (complication.family == .circularSmall){
-            let template = CLKComplicationTemplateCircularSmallStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
-            handler(entry)
-         } else if (complication.family == .modularLarge){
-           let template = CLKComplicationTemplateModularLargeStandardBody()
-           template.headerTextProvider = month
-           template.body1TextProvider = day
-           let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
-           handler(entry)
-        } else if (complication.family == .graphicCircular){
-            let template = CLKComplicationTemplateGraphicCircularStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
-            handler(entry)
-        } else {
-            handler(nil)
-        }
-        */
-//        handler(nil)
     }
     
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
@@ -152,44 +118,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        let template = getTemplate(complication)
+        let template = getTemplate(complication: complication)
         if let tmp = template {
             handler(template)
         }
-        /*
-        let month = CLKSimpleTextProvider(text: Date().month , shortText: Date().month)
-        month.tintColor = monthColor
-        let day = CLKSimpleTextProvider(text: Date().day, shortText: Date().day)
-        day.tintColor = dayColor
-        // This method will be called once per supported complication, and the results will be cached
-        if (complication.family == .modularSmall){
-            // modular small won't show up at all.
-//            let template = CLKComplicationTemplateModularSmallSimpleText()
-//            template.textProvider = month
-            let template = CLKComplicationTemplateModularSmallStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            handler(template)
-        } else if (complication.family == .circularSmall){
-            let template = CLKComplicationTemplateCircularSmallStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            handler(template)
-        } else if (complication.family == .modularLarge){
-            let template = CLKComplicationTemplateModularLargeStandardBody()
-            template.headerTextProvider = month
-            template.body1TextProvider = day
-            handler(template)
-        } else if (complication.family == .graphicCircular){
-            let template = CLKComplicationTemplateGraphicCircularStackText()
-            template.line1TextProvider = month
-            template.line2TextProvider = day
-            handler(template)
-        } else {
-            
-            handler(nil)
-        }
-        */
     }
     
 }
