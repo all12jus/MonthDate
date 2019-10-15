@@ -105,7 +105,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var currentDate: Date = date
         var entries: [CLKComplicationTimelineEntry] = []        
         // let template = getTemplate(complication)
-        if let tmp = template {
+        for _ in 1...limit {
+            currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+            let curr = Calendar.current.startOfDay(for: currentDate)
+            let template = getTemplate(complication, date: curr)
+            if let tmp = template {
+                let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
+                entries.append(entry)            
+            }
+        }        
+        
+/*        if let tmp = template {
             // loop thru days until then.
             for _ in 1...limit {
             
@@ -116,7 +126,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 entries.append(entry)
             }
         } 
-        
+        */
         
         handler(entries)
     }
