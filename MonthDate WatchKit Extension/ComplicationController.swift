@@ -20,6 +20,11 @@ extension Date {
         dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: self)
     }
+    var watchAppContent: String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE\nMMMM dd yyyy"
+        return dateFormatter.string(from: self)
+    }
 }
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
@@ -83,8 +88,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        // Call the handler with the current timeline entry        
-//        getTemplate(complication)
+        // Call the handler with the current timeline entry
         let template = getTemplate(complication)
         if let tmp = template {
             let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: tmp)
@@ -101,10 +105,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after to the given date
-        // let truncated = Calendar.current.startOfDay(for: Date())
         var currentDate: Date = date
-        var entries: [CLKComplicationTimelineEntry] = []        
-        // let template = getTemplate(complication)
+        var entries: [CLKComplicationTimelineEntry] = []
         for _ in 1...limit {
             currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
             let curr = Calendar.current.startOfDay(for: currentDate)
@@ -113,20 +115,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
                 entries.append(entry)            
             }
-        }        
-        
-/*        if let tmp = template {
-            // loop thru days until then.
-            for _ in 1...limit {
-            
-                currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
-                let curr = Calendar.current.startOfDay(for: currentDate)
-                let template = getTemplate(complication, date: curr)
-                let entry = CLKComplicationTimelineEntry(date: curr, complicationTemplate: tmp)
-                entries.append(entry)
-            }
-        } 
-        */
+        }
         
         handler(entries)
     }

@@ -422,6 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"MonthDate WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				ENABLE_PREVIEWS = YES;
@@ -446,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"MonthDate WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				ENABLE_PREVIEWS = YES;
@@ -471,6 +473,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				IBSC_MODULE = MonthDate_WatchKit_Extension;
 				INFOPLIST_FILE = "MonthDate WatchKit App/Info.plist";
@@ -490,6 +493,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				IBSC_MODULE = MonthDate_WatchKit_Extension;
 				INFOPLIST_FILE = "MonthDate WatchKit App/Info.plist";
@@ -507,7 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinjallen.MonthDate;
@@ -520,7 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 562HEMPPEX;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinjallen.MonthDate;

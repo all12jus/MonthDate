@@ -10,7 +10,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+//        let date = String(format: "%@ %@", arguments: [Date().month, Date().day])
+//        let text = Text(Date().watchAppContent)
+//        return text
+        
+        let date = Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM dd yyyy"
+        
+        return VStack(alignment: .center, spacing: 20) {
+            Text(dateFormatter.string(from: date))
+            Text(dateFormatter1.string(from: date))
+        }
     }
 }
 
